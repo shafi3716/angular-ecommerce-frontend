@@ -1,0 +1,7 @@
+{
+  "appId": "com.ecommerce.Shafi",
+  "appName": "Shafi",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist"
+}
