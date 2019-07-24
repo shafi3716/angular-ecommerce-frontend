@@ -33,6 +33,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [],
@@ -69,6 +70,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     MatSortModule,
     MatPaginatorModule,
     MatBadgeModule,
+    ScrollingModule,
     ReactiveFormsModule,
     FormsModule
   ],
@@ -104,6 +106,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     MatSortModule,
     MatPaginatorModule,
     MatBadgeModule,
+    ScrollingModule,
     ReactiveFormsModule,
     FormsModule
   ]

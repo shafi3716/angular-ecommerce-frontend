@@ -19,10 +19,8 @@ export class DashboardSidenavComponent implements OnInit {
    private media: MediaMatcher,
    private router: Router
   ) { 
-
     this.mediaQuery = media.matchMedia('(max-width: 900px)');
     this.dashboard = Dashboard;
-  
   }
 
   ngOnInit() {}

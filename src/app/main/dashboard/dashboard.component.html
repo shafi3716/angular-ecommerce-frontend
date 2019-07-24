@@ -11,7 +11,9 @@
 
     <app-dashboard-header (navBarOpenEvent) = "navBarOpenEvent($event)" (navPosition)="navPosition($event)"></app-dashboard-header>
 
-    <router-outlet></router-outlet>
+    <div class="dashboard-main-section">
+      <router-outlet></router-outlet>
+    </div>
 
     <app-dashboard-footer></app-dashboard-footer>
 

@@ -1,3 +1,4 @@
+import { ApiCommonService } from './../../../service/common/api-common.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private apiCommon: ApiCommonService
+  ) { }
 
   ngOnInit() {
+    
+    this.apiCommon.get('category').subscribe( 
+      res => {
+      console.log(res);
+    });
+
   }
 
 }
