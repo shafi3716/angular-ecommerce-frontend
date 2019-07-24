@@ -18,7 +18,7 @@
 
         <ng-container *ngIf="data.type === 'group' && data.children.length > 0">
             <h3 mat-subheader>{{data.title}}</h3>
-            <mat-list-item *ngFor="let child of data.children" (click)="mediaQuery.matches === true && closeSideNav()">
+            <mat-list-item *ngFor="let child of data.children" (click)="handleSideNav(child.url)">
               <mat-icon mat-list-icon color="primary">{{child.icon}}</mat-icon>
               <h4 mat-line>{{ child.title }}</h4>
             </mat-list-item>
