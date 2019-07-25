@@ -20,7 +20,6 @@ export class ApiCommonService {
   ) { 
     this.apiUrl = environment.api_url;
     this.headers = {headers: this.helper.getAuthHeader()};
-
    }
 
   public get(route): Observable<any> {

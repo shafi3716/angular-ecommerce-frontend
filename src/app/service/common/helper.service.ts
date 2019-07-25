@@ -18,6 +18,7 @@ export class HelperService {
 
   public getAuthHeader() {
     const headers = new HttpHeaders()
+        .set('Content-Type', 'application/json')
         .set('Authorization', 'Bearer ' + this.storage.getAccessToken());
     return headers;
   }
