@@ -13,5 +13,14 @@ mat-sidenav{
 }
 
 .dashboard-main-section{
-    padding: 1em;
+    padding: 1.5em;
 }
+
+@media only screen and (max-width: 900px) {
+    .dashboard-main-section{
+        padding: .5em;
+    }
+    .onlyDesktop{
+        display: none;
+    }
+  }

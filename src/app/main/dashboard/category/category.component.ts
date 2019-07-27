@@ -9,11 +9,12 @@ import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 })
 export class CategoryComponent implements OnInit {
 
-  displayedColumns: string[] = ['_id', 'title', 'description', 'position'];
+  displayedColumns: string[] = ['_id', 'title', 'description', 'position', 'action'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  paginateStartNo = 0;
 
   constructor(
     private apiCommon: ApiCommonService
@@ -30,8 +31,20 @@ export class CategoryComponent implements OnInit {
 
   }
 
+  delete(id): void{
+    this.apiCommon.delete('category/', id).subscribe(
+      res => {
+        console.log(res);
+      }
+    )
+  }
+
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+  onPaginateChange(event) {
+    this.paginateStartNo = event.pageIndex * event.pageSize;
+}
 
 }

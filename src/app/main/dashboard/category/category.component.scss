@@ -1,33 +1,19 @@
+.header{
+    display: flex;
+    padding: 0em 1em;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #607d8b7a;
+}
+
+.mat-form-field{
+    width: 100%;
+}
 
 table{
     width: 100%;
     th,td{
         padding: 0em .5em;
-    }
-}
-
-::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
-    padding-bottom: 0 !important; 
-}
-
-.header{
-    display: flex;
-    flex: 4;
-    align-items: center;
-    padding: 0em 1em;
-    background-color: whitesmoke;
-    .title{
-        flex: 1;
-    }
-    .search{
-        flex: 2;
-        .mat-form-field{
-            width: 100%;
-        }
-    }
-    .create-button{
-        flex: 1;
-        direction: rtl;
     }
 }
 
@@ -38,23 +24,16 @@ table{
     align-items: center;
 }
 
-.mat-mini-fab{
-    position: fixed;
-    right: 2em;
-    bottom: 5em;
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: unset;
+}
+.mat-expansion-panel-header {
+    padding: 0 .5em 0 0;
 }
 
-::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.4em 0px !important;}
-::ng-deep .mat-form-field-label-wrapper { top: -1.5em; }
-
-::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
-    transform: translateY(-1.1em) scale(.75);
-    width: 133.33333%;
-}
-
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 400px) {
     table{
         display: block;
-        overflow: auto;
+        overflow-x: auto;
     }
   }

@@ -12,7 +12,7 @@
       <form name="login" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="outline">
           <mat-label>Enter email</mat-label>
-          <input type="email" matInput placeholder="Enter email" formControlName="email" required/>
+          <input matInput placeholder="Enter email" formControlName="email" required/>
           <mat-error *ngIf="loginForm.get('email').hasError('required')">The email is required.</mat-error>
           <mat-error *ngIf="loginForm.get('email').hasError('email')">The email address is not valid.</mat-error>
         </mat-form-field>
