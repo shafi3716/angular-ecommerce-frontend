@@ -71,16 +71,15 @@ export class AddProductComponent implements OnInit {
 
       this.apiCommon.store('product', formData).subscribe(
         res => {
-          console.log(res);
-          // if (res.status === 'success'){
-          //   this.snackBar.open(res.message, 'close', {
-          //     duration: 2500,
-          //     verticalPosition: 'top',
-          //     horizontalPosition: 'right',
-          //     panelClass: ['snackbar-success']
-          //   });
-          //   this.router.navigateByUrl('/dashboard/category');
-          // }
+          if (res.status === 'success') {
+            this.snackBar.open(res.message, 'close', {
+              duration: 2500,
+              verticalPosition: 'top',
+              horizontalPosition: 'right',
+              panelClass: ['snackbar-success']
+            });
+            this.router.navigateByUrl('/dashboard/product');
+          }
         }
       )
     }
