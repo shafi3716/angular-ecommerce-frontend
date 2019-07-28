@@ -1,0 +1,28 @@
+
+.header{
+    display: flex;
+    padding: 0em 1em;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #607d8b7a;
+}
+
+.mat-form-field{
+    width: 100%;
+}
+
+.body{
+    padding: 1em;
+}
+
+@media only screen and (min-width: 900px) {
+    .col-2{
+        display: flex;
+        .mat-form-field:first-child{
+            padding-right: .5em;
+        }
+        .mat-form-field:last-child{
+            padding-left: .5em;
+        }
+    }
+  }

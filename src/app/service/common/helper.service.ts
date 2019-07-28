@@ -20,7 +20,7 @@ export class HelperService {
     const headers = new HttpHeaders()
         .set('Authorization', 'Bearer ' + this.storage.getAccessToken())
         .set('Content-Type', 'application/json');
-        
+
     return headers;
   }
 

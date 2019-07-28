@@ -1,0 +1,48 @@
+<div class="mat-elevation-z8">
+
+        <div class="header">
+            <div class="title">
+                <h3>Add SubCategory</h3>
+            </div>
+            <div class="button">
+                <button mat-button mat-raised-button color="primary" routerLink="/dashboard/subcategory"><mat-icon>undo</mat-icon> Back</button>
+            </div>
+        </div>
+    
+        <div class="body">
+    
+            <form name="subcategoryForm" [formGroup]="subcategoryForm" (ngSubmit)="onSubmit()">
+    
+                <mat-form-field appearance="fill">
+                    <mat-label>Category Id</mat-label>
+                    <mat-select formControlName="categoryId">
+                        <mat-option *ngFor="let data of categoryData" [value]="data._id">
+                            {{data.title}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="subcategoryForm.get('title').hasError('required')">The CategoryId is required.</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Subcategory Title</mat-label>
+                    <input matInput placeholder="title" formControlName="title">
+                    <mat-error *ngIf="subcategoryForm.get('title').hasError('required')">The Subcategory Title is required.</mat-error>
+                </mat-form-field>
+    
+                <mat-form-field appearance="fill">
+                    <mat-label>Subcategory Description</mat-label>
+                    <textarea matInput placeholder="description" formControlName="description" rows="6"></textarea>
+                </mat-form-field>
+    
+                <mat-form-field appearance="fill">
+                    <mat-label>Subcategory Position</mat-label>
+                    <input type="number" matInput placeholder="position" formControlName="position">
+                    <mat-error *ngIf="subcategoryForm.get('position').hasError('required')">The Subcategory Position is required.</mat-error>
+                </mat-form-field>
+    
+                <button mat-raised-button color="primary" type="submit">Submit</button>
+    
+            </form>
+    
+        </div>
+    </div>

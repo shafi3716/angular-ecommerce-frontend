@@ -5,13 +5,14 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
 @Component({
-  selector: 'app-add-category',
-  templateUrl: './add-category.component.html',
-  styleUrls: ['./add-category.component.scss']
+  selector: 'app-add-sub-category',
+  templateUrl: './add-sub-category.component.html',
+  styleUrls: ['./add-sub-category.component.scss']
 })
-export class AddCategoryComponent implements OnInit {
+export class AddSubCategoryComponent implements OnInit {
 
-  categoryForm: FormGroup;
+  subcategoryForm: FormGroup;
+  categoryData: any;
 
   constructor(
     private fb: FormBuilder,
@@ -19,7 +20,8 @@ export class AddCategoryComponent implements OnInit {
     private router: Router,
     private snackBar: MatSnackBar,
   ) {
-    this.categoryForm = this.fb.group({
+    this.subcategoryForm = this.fb.group({
+      categoryId: ['', Validators.required],
       title: ['', Validators.required],
       description: [''],
       position: ['', Validators.required],
@@ -27,21 +29,29 @@ export class AddCategoryComponent implements OnInit {
    }
 
   ngOnInit() {
+
+    this.apiCommon.get('category').subscribe(
+      res => {
+        this.categoryData = res;
+      }
+    );
+
   }
 
-  onSubmit(): void{
+  onSubmit(): void {
 
-    if (this.categoryForm.valid){
-      this.apiCommon.store('category', this.categoryForm.value).subscribe(
+    if (this.subcategoryForm.valid) {
+      this.apiCommon.store('subcategory', this.subcategoryForm.value).subscribe(
         res => {
-          if (res.status === 'success'){
+          console.log(res);
+          if (res.status === 'success') {
             this.snackBar.open(res.message, 'close', {
               duration: 2500,
               verticalPosition: 'top',
               horizontalPosition: 'right',
               panelClass: ['snackbar-success']
             });
-            this.router.navigateByUrl('/dashboard/category');
+            this.router.navigateByUrl('/dashboard/subcategory');
           }
         }
       )

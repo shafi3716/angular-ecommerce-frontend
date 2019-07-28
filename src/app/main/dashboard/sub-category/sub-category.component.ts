@@ -1,16 +1,16 @@
-import { ApiCommonService } from './../../../service/common/api-common.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
+import { ApiCommonService } from 'src/app/service/common/api-common.service';
 import { GlobalDeleteDialogComponent } from '../common/global-delete-dialog/global-delete-dialog.component';
 
 @Component({
-  selector: 'app-category',
-  templateUrl: './category.component.html',
-  styleUrls: ['./category.component.scss']
+  selector: 'app-sub-category',
+  templateUrl: './sub-category.component.html',
+  styleUrls: ['./sub-category.component.scss']
 })
-export class CategoryComponent implements OnInit {
+export class SubCategoryComponent implements OnInit {
 
-  displayedColumns: string[] = ['_id', 'createdAt', 'title', 'description', 'position', 'action'];
+  displayedColumns: string[] = ['_id', 'createdAt', 'categoryId', 'title', 'description', 'position', 'action'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -23,13 +23,13 @@ export class CategoryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiCommon.get('category').subscribe(
+
+    this.apiCommon.get('subcategory').subscribe(
       res => {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
     });
-
   }
 
   delete(id): void{
@@ -37,8 +37,8 @@ export class CategoryComponent implements OnInit {
     const dialogRef = this.dialog.open(GlobalDeleteDialogComponent, {
       width: '400px',
       data: {
-        title: 'Category',
-        url: 'category/',
+        title: 'SubCategory',
+        url: 'subcategory/',
         id
       }
     });

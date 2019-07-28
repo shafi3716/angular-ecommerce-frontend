@@ -15,8 +15,20 @@ export const Dashboard: any[] = [
                 title: 'Subcategory',
                 type: 'item',
                 icon: 'category',
-                url: '/dashboard'
+                url: '/dashboard/subcategory'
             },
+        ]
+    },
+    {
+        title: 'Product',
+        type: 'group',
+        children: [
+            {
+                title: 'Product',
+                type: 'item',
+                icon: 'fastfood',
+                url: '/dashboard/product'
+            }
         ]
     },
     // {
