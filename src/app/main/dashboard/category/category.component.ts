@@ -32,7 +32,7 @@ export class CategoryComponent implements OnInit {
 
   }
 
-  delete(id): void{
+  delete(id): void {
 
     const dialogRef = this.dialog.open(GlobalDeleteDialogComponent, {
       width: '400px',
@@ -45,7 +45,12 @@ export class CategoryComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === id) {
-        this.ngOnInit();
+        this.dataSource.data.map( (item, index) => {
+          if (item._id === id) {
+            this.dataSource.data.splice(index, 1);
+            this.dataSource._updateChangeSubscription();
+          }
+        });
       }
     });
   }
@@ -56,6 +61,6 @@ export class CategoryComponent implements OnInit {
 
   onPaginateChange(event) {
     this.paginateStartNo = event.pageIndex * event.pageSize;
-}
+  }
 
 }

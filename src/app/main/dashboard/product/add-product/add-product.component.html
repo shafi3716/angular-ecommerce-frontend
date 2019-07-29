@@ -54,7 +54,9 @@
                     <textarea matInput placeholder="description" formControlName="description" rows="6"></textarea>
                 </mat-form-field>
 
-                <input type="file" placeholder="file" formControlName="image" (change)="handleImage($event)" accept="image/*">
+                <div class="p-b-1">
+                    <input type="file" placeholder="file" formControlName="image" (change)="handleImage($event)" accept="image/*">
+                </div>
 
                 <button mat-raised-button color="primary" type="submit">Submit</button>
     

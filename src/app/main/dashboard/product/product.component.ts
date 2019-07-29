@@ -45,7 +45,12 @@ export class ProductComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === id) {
-        this.ngOnInit();
+        this.dataSource.data.map( (item, index) => {
+          if (item._id === id) {
+            this.dataSource.data.splice(index, 1);
+            this.dataSource._updateChangeSubscription();
+          }
+        });
       }
     });
   }

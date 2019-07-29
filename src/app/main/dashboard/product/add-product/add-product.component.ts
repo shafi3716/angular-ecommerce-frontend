@@ -52,7 +52,6 @@ export class AddProductComponent implements OnInit {
 
     if (event.target.files && event.target.files[0]) {
       this.image = <File>event.target.files[0];
-      console.log(event);
     }
 
   }
