@@ -34,6 +34,10 @@ export class CategoryComponent implements OnInit {
 
   delete(id): void {
 
+    // width: '100vw',
+    // height: '100vh',
+    // maxWidth: 'none',
+
     const dialogRef = this.dialog.open(GlobalDeleteDialogComponent, {
       width: '400px',
       data: {
