@@ -2,6 +2,7 @@ import { ApiCommonService } from './../../../service/common/api-common.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
 import { GlobalDeleteDialogComponent } from '../common/global-delete-dialog/global-delete-dialog.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
 
 @Component({
   selector: 'app-category',
@@ -28,6 +29,24 @@ export class CategoryComponent implements OnInit {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+    });
+
+  }
+
+  createDialog(): void {
+
+    const dialogRef = this.dialog.open(AddCategoryComponent , {
+      width: '100vw',
+      height: '100vh',
+      maxWidth: 'none',
+      autoFocus: false
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.dataSource.data.unshift(result);
+        this.dataSource._updateChangeSubscription();
+      }
     });
 
   }

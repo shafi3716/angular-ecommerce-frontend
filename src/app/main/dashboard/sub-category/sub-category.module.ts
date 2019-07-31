@@ -10,10 +10,6 @@ const routes: Routes = [
   {
     path: '',
     component: SubCategoryComponent
-  },
-  {
-    path: 'create',
-    component: AddSubCategoryComponent
   }
 ];
 
@@ -23,6 +19,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     MatModule
-  ]
+  ],
+  entryComponents: [AddSubCategoryComponent]
 })
 export class SubCategoryModule { }

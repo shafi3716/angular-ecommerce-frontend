@@ -4,6 +4,7 @@ import { ProductComponent } from './product.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MatModule } from 'src/app/mat.module';
 import { AddProductComponent } from './add-product/add-product.component';
+import { DetailProductComponent } from './detail-product/detail-product.component';
 
 const routes: Routes = [
   {
@@ -17,11 +18,12 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [ProductComponent, AddProductComponent],
+  declarations: [ProductComponent, AddProductComponent, DetailProductComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     MatModule
-  ]
+  ],
+  entryComponents: [DetailProductComponent]
 })
 export class ProductModule { }

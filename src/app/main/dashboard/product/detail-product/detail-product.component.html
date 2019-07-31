@@ -1,0 +1,23 @@
+<div class="mat-elevation-z8">
+
+    <div class="header">
+        <div class="title">
+            <h3>{{data.data?.title}}</h3>
+        </div>
+        <div class="button">
+            <button mat-icon-button class="danger" mat-dialog-close matTooltip="close"><mat-icon>close</mat-icon></button>
+        </div>
+    </div>
+
+    <div class="body">
+      <div class="product-details">
+        <div class="image">
+          <img [src]="base_url + data.data?.image" width="100%"/>
+        </div>
+  
+        <div class="description">
+          
+        </div>
+      </div>
+    </div>
+</div>

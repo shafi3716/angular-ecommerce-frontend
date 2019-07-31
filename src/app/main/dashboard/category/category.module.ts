@@ -9,12 +9,8 @@ const routes: Routes = [
   {
     path: '',
     component: CategoryComponent
-  },
-  {
-    path: 'create',
-    component: AddCategoryComponent
   }
-]
+];
 
 @NgModule({
   declarations: [CategoryComponent, AddCategoryComponent],
@@ -22,6 +18,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     MatModule
-  ]
+  ],
+  entryComponents: [AddCategoryComponent]
 })
 export class CategoryModule { }

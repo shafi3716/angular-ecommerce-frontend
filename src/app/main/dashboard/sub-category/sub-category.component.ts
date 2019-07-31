@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
 import { ApiCommonService } from 'src/app/service/common/api-common.service';
 import { GlobalDeleteDialogComponent } from '../common/global-delete-dialog/global-delete-dialog.component';
+import { AddSubCategoryComponent } from './add-sub-category/add-sub-category.component';
 
 @Component({
   selector: 'app-sub-category',
@@ -30,6 +31,24 @@ export class SubCategoryComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
     });
+  }
+
+  createDialog(): void {
+
+    const dialogRef = this.dialog.open(AddSubCategoryComponent , {
+      width: '100vw',
+      height: '100vh',
+      maxWidth: 'none',
+      autoFocus: false
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.dataSource.data.unshift(result);
+        this.dataSource._updateChangeSubscription();
+      }
+    });
+
   }
 
   delete(id): void{

@@ -1,24 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiCommonService } from 'src/app/service/common/api-common.service';
-import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-add-sub-category',
   templateUrl: './add-sub-category.component.html',
   styleUrls: ['./add-sub-category.component.scss']
 })
-export class AddSubCategoryComponent implements OnInit {
+export class AddSubCategoryComponent implements OnInit, AfterContentInit {
 
   subcategoryForm: FormGroup;
   categoryData: any;
+  loader: boolean;
+  @ViewChild('autofocus' , {static: true}) autofocus: ElementRef;
 
   constructor(
     private fb: FormBuilder,
     private apiCommon: ApiCommonService,
-    private router: Router,
     private snackBar: MatSnackBar,
+    public dialogRef: MatDialogRef<AddSubCategoryComponent>
   ) {
     this.subcategoryForm = this.fb.group({
       categoryId: ['', Validators.required],
@@ -41,9 +42,10 @@ export class AddSubCategoryComponent implements OnInit {
   onSubmit(): void {
 
     if (this.subcategoryForm.valid) {
+      this.loader = true;
       this.apiCommon.store('subcategory', this.subcategoryForm.value).subscribe(
         res => {
-          console.log(res);
+          this.loader = false;
           if (res.status === 'success') {
             this.snackBar.open(res.message, 'close', {
               duration: 2500,
@@ -51,12 +53,17 @@ export class AddSubCategoryComponent implements OnInit {
               horizontalPosition: 'right',
               panelClass: ['snackbar-success']
             });
-            this.router.navigateByUrl('/dashboard/subcategory');
+            this.dialogRef.close(res.data);
           }
+        },
+        err => {
+          this.loader = false;
         }
-      )
+      );
     }
-
   }
 
+  ngAfterContentInit(): void {
+    this.autofocus.nativeElement.focus();
+  }
 }

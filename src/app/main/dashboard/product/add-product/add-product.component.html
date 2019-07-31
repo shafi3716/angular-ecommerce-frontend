@@ -1,17 +1,32 @@
 <div class="mat-elevation-z8">
+        <mat-progress-bar *ngIf="loader" mode="indeterminate"></mat-progress-bar>
 
         <div class="header">
             <div class="title">
                 <h3>Add Product</h3>
             </div>
             <div class="button">
-                <button mat-button mat-raised-button color="primary" routerLink="/dashboard/product"><mat-icon>undo</mat-icon> Back</button>
+                <button mat-icon-button class="danger" mat-dialog-close matTooltip="close"><mat-icon>close</mat-icon></button>
             </div>
         </div>
     
         <div class="body">
     
             <form name="productForm" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    
+                <div class="col-2">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Product Title</mat-label>
+                        <input matInput placeholder="title" formControlName="title" #autofocus>
+                        <mat-error *ngIf="productForm.get('title').hasError('required')">The Product Title is required.</mat-error>
+                    </mat-form-field>
+    
+                    <mat-form-field appearance="fill">
+                        <mat-label>Product position</mat-label>
+                        <input type="number" matInput placeholder="position" formControlName="position">
+                        <mat-error *ngIf="productForm.get('position').hasError('required')">The Product position is required.</mat-error>
+                    </mat-form-field>
+                </div>
 
                 <div class="col-2">
                     <mat-form-field appearance="fill">
@@ -35,20 +50,6 @@
                     </mat-form-field>
                 </div>
     
-                <div class="col-2">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Product Title</mat-label>
-                        <input matInput placeholder="title" formControlName="title">
-                        <mat-error *ngIf="productForm.get('title').hasError('required')">The Product Title is required.</mat-error>
-                    </mat-form-field>
-    
-                    <mat-form-field appearance="fill">
-                        <mat-label>Product position</mat-label>
-                        <input type="number" matInput placeholder="position" formControlName="position">
-                        <mat-error *ngIf="productForm.get('position').hasError('required')">The Product Position is required.</mat-error>
-                    </mat-form-field>
-                </div>
-    
                 <mat-form-field appearance="fill">
                     <mat-label>Product Description</mat-label>
                     <textarea matInput placeholder="description" formControlName="description" rows="6"></textarea>
@@ -56,6 +57,7 @@
 
                 <div class="p-b-1">
                     <input type="file" placeholder="file" formControlName="image" (change)="handleImage($event)" accept="image/*">
+                    <mat-slide-toggle color="primary" formControlName="feature">Features</mat-slide-toggle>
                 </div>
 
                 <button mat-raised-button color="primary" type="submit">Submit</button>
