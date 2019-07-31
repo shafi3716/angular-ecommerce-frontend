@@ -10,3 +10,13 @@
 .body{
     padding: 1em;
 }
+
+.product-details{
+    display: flex;
+    .image{
+        flex: 1;
+    }
+    .description{
+        flex: 1;
+    }
+}
