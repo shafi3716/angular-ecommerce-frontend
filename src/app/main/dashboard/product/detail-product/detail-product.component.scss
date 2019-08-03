@@ -13,8 +13,12 @@
 
 .product-details{
     display: flex;
+    height: 32em;
     .image{
         flex: 1;
+        img{
+            width: 100%;
+        }
     }
     .description{
         flex: 1;

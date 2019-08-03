@@ -41,7 +41,7 @@
               <ng-container matColumnDef="image">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
                 <td mat-cell *matCellDef="let element"> 
-                  <img [src]="'http://localhost:3000/' + element.image" width="70" height="50"/>
+                  <img [src]="backend_base_url + element.image" width="70" height="50" (click)="details(element)"/>
                 </td>
               </ng-container>
           
@@ -58,7 +58,7 @@
                     <button mat-icon-button matTooltip="Feature" *ngIf="element.feature === true">
                       <mat-icon class="success">check</mat-icon>
                     </button>
-                    <button mat-icon-button matTooltip="Feature" *ngIf="element.feature === false">
+                    <button mat-icon-button matTooltip="Unfeature" *ngIf="element.feature === false">
                       <mat-icon class="danger">close</mat-icon>
                     </button>
                   </ng-container>

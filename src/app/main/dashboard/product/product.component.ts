@@ -4,6 +4,7 @@ import { ApiCommonService } from 'src/app/service/common/api-common.service';
 import { GlobalDeleteDialogComponent } from '../common/global-delete-dialog/global-delete-dialog.component';
 import { DetailProductComponent } from './detail-product/detail-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-product',
@@ -18,6 +19,8 @@ export class ProductComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   paginateStartNo = 0;
+
+  backend_base_url = environment.base_url;
 
   constructor(
     private apiCommon: ApiCommonService,
