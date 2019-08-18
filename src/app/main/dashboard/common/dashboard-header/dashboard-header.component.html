@@ -3,7 +3,7 @@
 
     <mat-form-field appearance="standard" [ngClass]="!searchVisibility ? 'hidden' : 'visible'">
         <mat-label>Search</mat-label>
-        <input matInput placeholder="Search Anything">
+        <input matInput placeholder="Search Anything" #autofocus>
         <mat-icon matPrefix>search</mat-icon>
         <mat-icon matSuffix (click)="closeSearch()">clear</mat-icon>
     </mat-form-field>

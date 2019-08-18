@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, AfterContentChecked } from '@angular/core';
 import { StorageService } from 'src/app/service/common/storage.service';
 import { HelperService } from 'src/app/service/common/helper.service';
 import { Router } from '@angular/router';
@@ -8,12 +8,13 @@ import { Router } from '@angular/router';
   templateUrl: './dashboard-header.component.html',
   styleUrls: ['./dashboard-header.component.scss']
 })
-export class DashboardHeaderComponent implements OnInit {
+export class DashboardHeaderComponent implements OnInit, AfterContentChecked {
 
   @Output() navBarOpenEvent = new EventEmitter<any>();
   @Output() navPosition = new EventEmitter<any>();
   // search
   searchVisibility = false;
+  @ViewChild('autofocus', {static: true}) autofocus: ElementRef; 
 
   constructor(
     private helper: HelperService,
@@ -50,6 +51,12 @@ export class DashboardHeaderComponent implements OnInit {
 
   closeSearch(): void {
     this.searchVisibility = false;
+  }
+
+  ngAfterContentChecked(): void {
+    if (this.searchVisibility === true){
+      this.autofocus.nativeElement.focus();
+    }
   }
 
 }
