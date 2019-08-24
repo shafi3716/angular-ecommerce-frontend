@@ -1,5 +1,5 @@
 import { ApiCommonService } from './../../../service/common/api-common.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
 import { GlobalDeleteDialogComponent } from '../common/global-delete-dialog/global-delete-dialog.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
@@ -10,7 +10,7 @@ import { AddCategoryComponent } from './add-category/add-category.component';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
-
+  
   displayedColumns: string[] = ['_id', 'createdAt', 'title', 'description', 'position', 'action'];
   dataSource: MatTableDataSource<any>;
 
@@ -84,6 +84,16 @@ export class CategoryComponent implements OnInit {
 
   onPaginateChange(event) {
     this.paginateStartNo = event.pageIndex * event.pageSize;
+
+    if (this.paginateStartNo + event.pageSize >= event.length) {
+      this.apiCommon.get(`category?skip=${event.length}&limit=${4}`).subscribe(
+        res => {
+          console.log(res);
+          // this.dataSource = new MatTableDataSource(res);
+          // this.dataSource.paginator = this.paginator;
+          // this.dataSource.sort = this.sort;
+      });
+    }
   }
 
 }
