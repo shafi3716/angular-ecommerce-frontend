@@ -1,3 +1,4 @@
+import { ApiCommonService } from './../../../../service/common/api-common.service';
 import { Component, OnInit } from '@angular/core';
 import { HelperService } from 'src/app/service/common/helper.service';
 import { StorageService } from 'src/app/service/common/storage.service';
@@ -10,16 +11,22 @@ import { StorageService } from 'src/app/service/common/storage.service';
 export class HeaderComponent implements OnInit {
 
   isLoggedin;
+  categories = [];
 
   constructor(
     private helper: HelperService,
-    private storage: StorageService
+    private storage: StorageService,
+    private apicommon: ApiCommonService
   ) { }
 
   ngOnInit() {
 
     this.isLoggedin = this.helper.isAuthorized();
-    
+    this.apicommon.get('category').subscribe(
+      res => {
+        this.categories = res;
+      }
+    );
   }
 
   logout(): void {

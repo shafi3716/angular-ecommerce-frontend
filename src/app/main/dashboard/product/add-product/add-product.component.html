@@ -56,7 +56,8 @@
                 </mat-form-field>
 
                 <div class="p-b-1">
-                    <input type="file" placeholder="file" formControlName="image" (change)="handleImage($event)" accept="image/*">
+                    <mat-label>Thumbnail Image: </mat-label> &nbsp;&nbsp;
+                    <input type="file" formControlName="image" (change)="handleImage($event)" accept="image/*">
                     <mat-slide-toggle color="primary" formControlName="feature">Features</mat-slide-toggle>
                 </div>
 

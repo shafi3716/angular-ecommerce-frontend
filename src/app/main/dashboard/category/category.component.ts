@@ -86,7 +86,7 @@ export class CategoryComponent implements OnInit {
     this.paginateStartNo = event.pageIndex * event.pageSize;
 
     if (this.paginateStartNo + event.pageSize >= event.length) {
-      this.apiCommon.get(`category?skip=${event.length}&limit=${4}`).subscribe(
+      this.apiCommon.get(`category?skip=${event.length}&limit=${3}`).subscribe(
         res => {
           console.log(res);
           // this.dataSource = new MatTableDataSource(res);

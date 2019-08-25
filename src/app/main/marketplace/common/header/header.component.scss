@@ -59,3 +59,7 @@ mat-toolbar{
 ul li:hover {
     background-color: #e1e2e1;
   }
+
+::ng-deep .mat-menu-panel.menu_category {
+    min-width: 40em !important;
+}
