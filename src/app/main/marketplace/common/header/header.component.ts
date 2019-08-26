@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
 
     this.isLoggedin = this.helper.isAuthorized();
-    this.apicommon.get('category').subscribe(
+    this.apicommon.get('public/category').subscribe(
       res => {
         this.categories = res;
       }
