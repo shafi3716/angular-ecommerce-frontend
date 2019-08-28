@@ -49,7 +49,21 @@
                         <mat-error *ngIf="productForm.get('subCategoryId').hasError('required')">The SubCategoryId is required.</mat-error>
                     </mat-form-field>
                 </div>
+
+                <div class="col-2">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Price</mat-label>
+                        <input type="number" matInput placeholder="price" formControlName="price">
+                        <mat-error *ngIf="productForm.get('price').hasError('required')">Price is required.</mat-error>
+                    </mat-form-field>
     
+                    <mat-form-field appearance="fill">
+                        <mat-label>Quantity</mat-label>
+                        <input type="number" matInput placeholder="quantity" formControlName="quantity">
+                        <mat-error *ngIf="productForm.get('quantity').hasError('required')">Quantity is required.</mat-error>
+                    </mat-form-field>
+                </div>
+
                 <mat-form-field appearance="fill">
                     <mat-label>Product Description</mat-label>
                     <textarea matInput placeholder="description" formControlName="description" rows="6"></textarea>

@@ -10,12 +10,19 @@
     </div>
 
     <div class="body">
-      <div class="product-details">
-        <div class="image">
-          <img [src]="base_url + data.data?.image">
-        </div>
-        <div class="description">
-          <p>{{data.data?.description}}</p>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="col-md-6">
+              <div class="image">
+                <img [src]="base_url + data.data?.image">
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div class="description">
+                <p>{{data.data?.description}}</p>
+              </div>
+          </div>
         </div>
       </div>
     </div>

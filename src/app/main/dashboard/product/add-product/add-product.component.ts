@@ -29,6 +29,8 @@ export class AddProductComponent implements OnInit, AfterContentInit {
       subCategoryId: ['', Validators.required],
       title: ['', Validators.required],
       description: [''],
+      price: ['', Validators.required],
+      quantity: ['', Validators.required],
       position: ['', Validators.required],
       image: [this.image],
       feature: [false]
@@ -61,7 +63,7 @@ export class AddProductComponent implements OnInit, AfterContentInit {
 
   onSubmit(): void{
 
-    if (this.productForm.valid){
+    if (this.productForm.valid) {
 
       this.loader = true;
 
@@ -71,6 +73,8 @@ export class AddProductComponent implements OnInit, AfterContentInit {
       formData.append('title', this.productForm.get('title').value);
       formData.append('description', this.productForm.get('description').value);
       formData.append('position', this.productForm.get('position').value);
+      formData.append('price', this.productForm.get('price').value);
+      formData.append('quantity', this.productForm.get('quantity').value);
       formData.append('feature', this.productForm.get('feature').value);
       formData.append('image', this.image, this.image.name);
 
