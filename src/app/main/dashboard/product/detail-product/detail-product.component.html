@@ -1,29 +1,43 @@
-<div class="mat-elevation-z8">
+<div class="mat-elevation-z2">
 
-    <div class="header">
-        <div class="title">
-            <h3>{{data.data?.title}}</h3>
-        </div>
-        <div class="button">
-            <button mat-icon-button class="danger" mat-dialog-close matTooltip="close"><mat-icon>close</mat-icon></button>
-        </div>
+  <div class="header">
+    <div class="title">
+      <h3>{{data.data?.title}}</h3>
     </div>
+    <div class="button">
+      <button mat-icon-button class="danger" mat-dialog-close matTooltip="close">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
 
-    <div class="body">
+  <div class="body">
 
-      <div class="row">
-        <div class="col-md-12">
-          <div class="col-md-6">
-              <div class="image">
-                <img [src]="base_url + data.data?.image">
-              </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-6">
+          <div class="image">
+            <img [src]="base_url + data.data?.image" width="100%">
           </div>
-          <div class="col-md-6">
-              <div class="description">
-                <p>{{data.data?.description}}</p>
-              </div>
+        </div>
+        <div class="col-md-6">
+          <div class="product-info">
+            <label>Availability</label>
+            <span> {{ data.data.quantity > 0 ? 'In Stock' : 'Out of Stock' }} </span>
+          </div>
+          <div class="product-info">
+            <label>Price</label>
+            <span>{{data.data?.price}}</span>
+          </div>
+          <div class="product-info">
+            <label>Quantity</label>
+            <span>{{data.data?.quantity}}</span>
+          </div>
+          <div class="description">
+            <p>{{data.data?.description}}</p>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </div>

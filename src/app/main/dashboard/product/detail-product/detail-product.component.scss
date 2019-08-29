@@ -11,16 +11,37 @@
     padding: 1em;
 }
 
-// .product-details{
-//     display: flex;
-//     height: 32em;
-//     .image{
-//         flex: 1;
-//         img{
-//             width: 100%;
-//         }
-//     }
-//     .description{
-//         flex: 1;
-//     }
-// }
+.product-info {
+    width: 30em;
+    display: flex;
+    align-items: center;
+}
+.product-info label{
+    font-weight: bold;
+    text-transform: capitalize;
+    padding-right: 2em;
+    font-family: Poppins;
+    color: #2d2d2d;
+    font-size: 16px;
+    flex: 1;
+}
+
+.product-info span{
+    color: #999;
+    font-weight: 400;
+    line-height: 25px;
+    font-size: 15px;
+    flex: 1;
+}
+
+.description {
+    text-align: justify;
+    font-family: Poppins;
+    font-size: 17px;
+}
+
+@media only screen and (max-width: 400px) {
+    .product-info {
+        width: 18em;
+    }
+  }
