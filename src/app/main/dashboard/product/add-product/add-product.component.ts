@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterContentInit, ViewChild, ElementRef } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ApiCommonService } from 'src/app/service/common/api-common.service';
 import { MatSnackBar, MatDialogRef } from '@angular/material';
 
@@ -9,7 +9,6 @@ import { MatSnackBar, MatDialogRef } from '@angular/material';
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit, AfterContentInit {
-
   productForm: FormGroup;
   categoryData: any;
   subCategoryData: any;
@@ -33,12 +32,15 @@ export class AddProductComponent implements OnInit, AfterContentInit {
       quantity: ['', Validators.required],
       position: ['', Validators.required],
       image: [this.image],
-      feature: [false]
+      feature: [false],
+
+      product_images: this.fb.array([
+        this.createItem()
+      ])
     });
    }
 
   ngOnInit() {
-
     this.apiCommon.get('category').subscribe(
       res => {
         this.categoryData = res;
@@ -50,7 +52,21 @@ export class AddProductComponent implements OnInit, AfterContentInit {
         this.subCategoryData = res;
       }
     );
+  }
 
+  createItem(): any {
+    return this.fb.group({
+      board_name: [''],
+      year: [''],
+    });
+  }
+
+  add_more_row(): void{
+    (this.productForm.controls['product_images'] as FormArray).push(this.createItem());
+  }
+
+  remove_row(i): void{
+    (this.productForm.controls['product_images'] as FormArray).removeAt(i);
   }
 
   handleImage(event): void {

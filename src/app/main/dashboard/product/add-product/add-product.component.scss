@@ -15,18 +15,14 @@
     padding: 1em;
 }
 
-.p-b-1{
-    padding-bottom: 1em;
-}
-
-@media only screen and (min-width: 900px) {
-    .col-2{
-        display: flex;
-        .mat-form-field:first-child{
-            padding-right: .5em;
-        }
-        .mat-form-field:last-child{
-            padding-left: .5em;
-        }
+.product_images{
+    display: flex;
+    justify-content: center;
+    img{
+        cursor: pointer;
     }
-  }
+    .actions{
+        display: flex;
+        align-items: center;
+    }
+}
