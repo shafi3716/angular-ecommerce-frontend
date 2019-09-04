@@ -73,19 +73,19 @@
                         </div>
                         <div class="col-md-6">
                             <mat-label>Thumbnail Image: </mat-label> &nbsp;&nbsp;
-                            <input type="file" formControlName="image" (change)="handleImage($event)" accept="image/*">
+                            <input type="file" (change)="handleImage($event)" accept="image/*">
                         </div>
                         <div class="col-md-6">
                             <mat-slide-toggle color="primary" formControlName="feature">Features</mat-slide-toggle>
                         </div>
                         <div class="col-md-12" style="margin: 2em 2em 0 0;">
-                            <span>Product Images</span>
+                            <span class="header-text">Product Images</span>
                             <div formArrayName="product_images" *ngFor="let item of productForm.get('product_images')['controls']; let i = index" class="product_images">
                                 <div [formGroupName]="i">
                                         <label>
                                             <!-- <span>{{i+1}}</span> -->
-                                            <img src="assets/images/noimage.jpg" height="100px"/>
-                                            <input type="file" placeholder="file" formControlName="board_name" style="visibility: hidden"/>
+                                            <img [src]="preview_images[i] ? preview_images[i] : 'assets/images/noimage.jpg'" height="100px"/>
+                                            <input type="file" (change)="handleMultipleImage($event,i)" accept="image/*" style="visibility: hidden"/>
                                         </label>
                                 </div>
                                 <div class="actions">

@@ -13,6 +13,8 @@ export class AddProductComponent implements OnInit, AfterContentInit {
   categoryData: any;
   subCategoryData: any;
   image: File;
+  productImages: Array<File> = [];
+  preview_images = [];
 
   @ViewChild('autofocus' , {static: true}) autofocus: ElementRef;
   loader: boolean;
@@ -31,7 +33,6 @@ export class AddProductComponent implements OnInit, AfterContentInit {
       price: ['', Validators.required],
       quantity: ['', Validators.required],
       position: ['', Validators.required],
-      image: [this.image],
       feature: [false],
 
       product_images: this.fb.array([
@@ -55,10 +56,7 @@ export class AddProductComponent implements OnInit, AfterContentInit {
   }
 
   createItem(): any {
-    return this.fb.group({
-      board_name: [''],
-      year: [''],
-    });
+    return this.fb.group({});
   }
 
   add_more_row(): void{
@@ -67,17 +65,31 @@ export class AddProductComponent implements OnInit, AfterContentInit {
 
   remove_row(i): void{
     (this.productForm.controls['product_images'] as FormArray).removeAt(i);
+    this.productImages.splice(i, 1);
+    this.preview_images.splice(i, 1);
   }
 
   handleImage(event): void {
-
     if (event.target.files && event.target.files[0]) {
       this.image = <File>event.target.files[0];
     }
+  }
 
+  handleMultipleImage(event,i): void {
+    if (event.target.files && event.target.files[0]) {
+      this.productImages[i] = <File>event.target.files[0];
+      var reader = new FileReader();
+      reader.readAsDataURL(<File>event.target.files[0]); 
+      reader.onload = (_event) => { 
+        this.preview_images[i] = reader.result; 
+      }
+    }
   }
 
   onSubmit(): void{
+    
+    console.log(this.productImages);
+    return;
 
     if (this.productForm.valid) {
 
