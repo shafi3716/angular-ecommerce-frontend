@@ -87,9 +87,6 @@ export class AddProductComponent implements OnInit, AfterContentInit {
   }
 
   onSubmit(): void{
-    
-    console.log(this.productImages);
-    return;
 
     if (this.productForm.valid) {
 
@@ -104,7 +101,15 @@ export class AddProductComponent implements OnInit, AfterContentInit {
       formData.append('price', this.productForm.get('price').value);
       formData.append('quantity', this.productForm.get('quantity').value);
       formData.append('feature', this.productForm.get('feature').value);
-      formData.append('image', this.image, this.image.name);
+      if (this.image){
+        formData.append('image', this.image, this.image.name);
+      }
+      for (let i=0; i < this.productImages.length; i++){
+        formData.append('productImages',this.productImages[i],this.productImages[i]['name']);
+      }
+
+      console.log(formData.getAll('productImages'));
+      // return;
 
       this.apiCommon.store('product', formData).subscribe(
         res => {
