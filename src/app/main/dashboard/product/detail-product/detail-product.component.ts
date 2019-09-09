@@ -9,16 +9,13 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 })
 export class DetailProductComponent implements OnInit {
 
-  base_url;
+  base_url = environment.base_url;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
-    this.base_url = environment.base_url;
-   }
+  ) {}
 
   ngOnInit() {
-
     console.log(this.data);
   }
 

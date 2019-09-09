@@ -9,7 +9,7 @@
                 <button mat-button mat-raised-button color="primary" (click)="createDialog()"><mat-icon>add_circle_outline</mat-icon> Add</button>
             </div>
         </div>
-        
+
         <div class="body">
             <div *ngIf="!dataSource" class="text-center">
               <mat-spinner diameter="50"></mat-spinner>
@@ -41,7 +41,7 @@
               <ng-container matColumnDef="image">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
                 <td mat-cell *matCellDef="let element"> 
-                  <img [src]="backend_base_url + element.image" width="70" height="50" (click)="details(element)"/>
+                  <img *ngIf="element.images[0]" [src]="backend_base_url + element.images[0].path" width="70" height="50" (click)="details(element)"/>
                 </td>
               </ng-container>
           

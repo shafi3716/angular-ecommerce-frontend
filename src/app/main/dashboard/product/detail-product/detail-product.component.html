@@ -17,7 +17,12 @@
       <div class="col-md-12">
         <div class="col-md-6">
           <div class="image">
-            <img [src]="base_url + data.data?.image" width="100%">
+            <img [src]="base_url + data?.data?.images[0]?.path" width="100%">
+          </div>
+          <div class="related-image">
+            <ng-container *ngFor="let item of data.data.images;let i = index">
+              <img [src]="base_url + item.path">
+            </ng-container>
           </div>
         </div>
         <div class="col-md-6">

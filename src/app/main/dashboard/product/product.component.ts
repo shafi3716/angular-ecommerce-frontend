@@ -34,7 +34,6 @@ export class ProductComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
     });
-
   }
 
   createDialog(): void {
